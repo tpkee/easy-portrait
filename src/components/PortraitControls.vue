@@ -1,6 +1,7 @@
 <template>
   <div class="w-72 border border-slate-800 rounded-md bg-slate-900 p-2.5 grid gap-2.5 relative">
     <button @click="emit('save')">Save portrait</button>
+    <button v-if="canDownloadZip" @click="downloadZip">Download portraits</button>
     <button @click="emit('zen')">
       Toggle Zen Mode
       <!-- TODO: change label to explicitate the open/close state -->
@@ -59,11 +60,12 @@
 
 <script lang="ts" setup>
 import type { Ref } from 'vue'
-import { ref, toValue, inject } from 'vue'
+import { ref, toValue, inject, computed } from 'vue'
 import AppInput from './AppInput.vue'
 import AppSelect from './AppSelect.vue'
 import ControlsCategory from './ControlsCategory.vue'
 import type * as Portrait from '@/types/portrait'
+import { BlobReader, BlobWriter, ZipWriter } from '@zip.js/zip.js'
 
 // Emits
 const emit = defineEmits<{
@@ -80,4 +82,53 @@ const scale = ref({
   y: 1,
 })
 const selectedMode = inject<Ref<Portrait.TPortrait>>('selectedMode')!
+
+// Computed
+const getAvailablePortraits = inject<Ref<Portrait.ISavedPortrait[]>>('availablePortraits')!
+const canDownloadZip = computed(
+  () =>
+    getAvailablePortraits.value.length === 3 &&
+    getAvailablePortraits.value.every((p) => p.blob != null),
+)
+
+// Functions
+async function getZipFileBlob() {
+  if (!canDownloadZip.value) return null
+
+  const zipWriter = new ZipWriter(new BlobWriter('application/zip'))
+  await Promise.all(
+    getAvailablePortraits.value.map((portrait) => {
+      let filename
+      switch (portrait.mode) {
+        case 'full':
+          filename = 'Fulllength.png'
+          break
+        case 'medium':
+          filename = 'Medium.png'
+          break
+        case 'small':
+          filename = 'Small.png'
+          break
+      }
+
+      return zipWriter.add(filename, new BlobReader(portrait.blob!))
+    }),
+  )
+  return zipWriter.close()
+}
+
+async function downloadZip() {
+  const bob = await getZipFileBlob()
+
+  if (!bob) return
+
+  document.body
+    .appendChild(
+      Object.assign(document.createElement('a'), {
+        download: `${window.crypto.randomUUID()}.zip`,
+        href: URL.createObjectURL(bob),
+      }),
+    )
+    .click()
+}
 </script>
