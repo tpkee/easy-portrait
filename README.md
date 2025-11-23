@@ -1,48 +1,18 @@
 # easy-portrait
 
-This template should help get you started developing with Vue 3 in Vite.
+Crop game portraits easily, specifically made for Warhammer 40k Rogue Trader and Pathfinder Wrath of the Righteous
 
-## Recommended IDE Setup
+[Screencast_20251123_235224.webm](https://github.com/user-attachments/assets/34d804bb-16b6-4d3c-9194-9a50e435f3b0)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Recommended Browser Setup
+## Features
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- No resizable crop, so you won't have to know how big your portrait needs to be
+- No "bad" surprises (stretching etc): the crop box are already at the required height and width, so there is no way to make a mistake (and find your neat small picture stretched like a macaroni) 
+- inherit the previously cropped picture so you won't have to remember what the hell you cropped before (so if you cropped the nothingness during medium or full, nothingness you will crop in small)
+- random uid generator, no chance to actually have a conflict in your neat portraits folder
+- ugly, dark UI. For those of you who cannot stand the light
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## Limbo
+- add input fields to edit the default sizes
+- add input field to add a custom name
