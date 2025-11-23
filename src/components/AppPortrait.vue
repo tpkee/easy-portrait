@@ -9,7 +9,7 @@
       />
     </div>
     <div
-      class="self-center"
+      class="self-start justify-center"
       :class="{
         'fixed inset-0 bg-black z-50 min-h-screen min-w-screen grid justify-center overflow-scroll transition-all duration-100 ease-in-out':
           isZenMode,
