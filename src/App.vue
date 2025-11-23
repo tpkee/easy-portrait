@@ -13,22 +13,6 @@
           </p>
         </div>
       </div>
-
-      <app-accordion v-if="false && getAvailablePortraits.length > 0" :open-at-mount="false">
-        <template #title>
-          <h2 class="font-semibold text-lg">Available Portraits Preview</h2>
-        </template>
-        <div class="flex gap-2.5 overflow-x-">
-          <div
-            v-for="(portrait, index) of getAvailablePortraits"
-            :key="index"
-            class="flex flex-col items-start justify-center first-letter:uppercase font-medium"
-          >
-            {{ portrait.mode }}
-            <img :src="portrait.src" :alt="portrait.mode" class="object-contain" />
-          </div>
-        </div>
-      </app-accordion>
     </header>
 
     <app-upload @upload="uploadFile" class="w-72" />
@@ -51,11 +35,10 @@
 
 <script setup lang="ts">
 import { computed, onUnmounted, provide, ref } from 'vue'
-import AppUpload from './components/AppUpload.vue'
-import AppPortrait from './components/AppPortrait.vue'
+import AppUpload from '@/components/AppUpload.vue'
+import AppPortrait from '@/components/AppPortrait.vue'
 import * as Portrait from '@/types/portrait'
-import AppAccordion from './components/AppAccordion.vue'
-import PortraitsPreview from './components/PortraitsPreview.vue'
+import PortraitsPreview from '@/components/PortraitsPreview.vue'
 
 // Reactive state
 const originalFileUrl = ref<string>()

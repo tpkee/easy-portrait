@@ -61,9 +61,9 @@
 <script lang="ts" setup>
 import type { Ref } from 'vue'
 import { ref, toValue, inject, computed } from 'vue'
-import AppInput from './AppInput.vue'
-import AppSelect from './AppSelect.vue'
-import ControlsCategory from './ControlsCategory.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppSelect from '@/components/AppSelect.vue'
+import ControlsCategory from '@/components/ControlsCategory.vue'
 import type * as Portrait from '@/types/portrait'
 import { BlobReader, BlobWriter, ZipWriter } from '@zip.js/zip.js'
 

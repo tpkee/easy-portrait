@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import AppAccordion from './AppAccordion.vue'
+import AppAccordion from '@/components/AppAccordion.vue'
 
 defineProps<{
   label: string

@@ -31,7 +31,7 @@ import CropperCanvas from '@cropper/element-canvas'
 import CropperImage from '@cropper/element-image'
 import CropperHandle from '@cropper/element-handle'
 import CropperShade from '@cropper/element-shade'
-import PortraitControls from './PortraitControls.vue'
+import PortraitControls from '@/components/PortraitControls.vue'
 
 // Template refs
 const cropperCanvasRef = useTemplateRef('cropperCanvas')

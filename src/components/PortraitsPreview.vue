@@ -23,7 +23,7 @@
 import { computed, useTemplateRef, inject } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useDraggable } from '@vueuse/core'
-import ControlsCategory from './ControlsCategory.vue'
+import ControlsCategory from '@/components/ControlsCategory.vue'
 import type * as Portrait from '@/types/portrait'
 
 // Template refs
