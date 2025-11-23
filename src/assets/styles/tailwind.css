@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+body {
+  font-size: theme('fontSize.sm');
+  color: theme('colors.white');
+  background-color: theme('colors.slate.950');
+}
+
+label {
+  font-weight: theme('fontWeight.medium');
+  font-size: theme('fontSize.xs');
+}
+
+input[type='radio'] {
+  position: relative;
+  width: theme('spacing.4');
+  height: theme('spacing.4');
+  appearance: none;
+  border-radius: theme('borderRadius.full');
+  border: theme('borderWidth.DEFAULT') solid theme('colors.slate.800');
+  background-color: theme('colors.white');
+  &::before {
+    content: '';
+    position: absolute;
+    inset: theme('spacing.1');
+    border-radius: theme('borderRadius.full');
+    background-color: theme('colors.white');
+  }
+  &:not(:checked)::before {
+    display: none;
+  }
+  &:checked {
+    border-color: theme('colors.violet.600');
+    background-color: theme('colors.violet.600');
+  }
+  &:focus-visible {
+    outline: theme('outlineWidth.2') solid theme('colors.violet.600');
+    outline-offset: theme('outlineOffset.2');
+  }
+  &:disabled {
+    border-color: theme('colors.slate.300');
+    background-color: theme('colors.slate.100');
+    &::before {
+      background-color: theme('colors.slate.400');
+    }
+  }
+}
+
+input,
+select {
+  width: 100%;
+  padding: theme('spacing.2');
+  border: theme('borderWidth.DEFAULT') solid theme('colors.slate.800');
+  border-radius: theme('borderRadius.md');
+  background-color: theme('colors.slate.900');
+  color: theme('colors.white');
+  font-size: theme('fontSize.sm');
+  transition: border-color theme('transitionDuration.100') theme('transitionTimingFunction.linear');
+
+  &:hover {
+    border-color: theme('colors.slate.700');
+  }
+
+  &:focus {
+    outline: none;
+    border-color: theme('colors.violet.600') !important;
+  }
+}
+
+button {
+  cursor: theme('cursor.pointer');
+  background-color: theme('colors.violet.600');
+  color: theme('colors.white');
+  padding: theme('spacing.2') theme('spacing.4');
+  font-size: theme('fontSize.sm');
+  border-radius: theme('borderRadius.md');
+  transition: background-color theme('transitionDuration.100')
+    theme('transitionTimingFunction.linear');
+
+  &:disabled {
+    background-color: theme('colors.slate.700');
+    cursor: theme('cursor.not-allowed') !important;
+  }
+  &:hover {
+    background-color: theme('colors.violet.500');
+  }
+}
