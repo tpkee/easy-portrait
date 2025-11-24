@@ -26,9 +26,11 @@ input[type='radio'] {
     border-radius: theme('borderRadius.full');
     background-color: theme('colors.white');
   }
+
   &:not(:checked)::before {
     display: none;
   }
+
   &:checked {
     border-color: theme('colors.violet.600');
     background-color: theme('colors.violet.600');
