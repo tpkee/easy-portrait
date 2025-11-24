@@ -61,13 +61,7 @@ const imageUrl = ref<string>(props.image)
 watch(
   () => props.image,
   (newVal) => {
-    console.log(
-      'New image prop value:',
-      newVal,
-      imageUrl.value,
-      newVal !== imageUrl.value,
-      props.cropperSize,
-    )
+    // this is probably useless now, remove later
     if (newVal !== imageUrl.value) {
       imageUrl.value = newVal
     }
@@ -97,7 +91,6 @@ function valueToPx(value: Nullable<number>) {
 }
 
 function onZoom(value: number) {
-  console.log('Zooming to:', value)
   cropperImageRef?.value?.$zoom(value)
 }
 
@@ -106,7 +99,6 @@ function toggleZenMode() {
 }
 
 function onSave() {
-  console.log('Saving image')
   const cc = cropperCanvasRef.value
   if (!cc) return
 
